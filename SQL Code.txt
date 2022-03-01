@@ -1,0 +1,36 @@
+//TABLE CREATION
+
+CREATE TABLE movie_details(
+movie_name varchar2(50) NOT NULL,  
+actor varchar2(50),  
+actress varchar2(50),
+release_year number(10) NOT NULL,
+director varchar2(50)
+); 
+
+desc movie_details 
+
+//INSERT RECORDS
+
+insert into movie_details values('Soorarai Potru','Surya Sivakumar','Aparna Balamurali','2020', 'Sudha Kongra'); 
+insert into movie_details(movie_name, actor, release_year, director) values('Kaithi','Karthi','2019', 'Lokesh Kanagaraj'); 
+insert into movie_details values('Kadaikutty Singam','Karthi','Sayyeshaa','2018', 'Pandiraj'); 
+insert into movie_details values('Theri','Vijay','Samantha','2016', 'Atlee Kumar'); 
+insert into movie_details values('I','Vikram','Amy Jackson','2015', 'Shankar'); 
+insert into movie_details values('Nanban','Vijay','Ileana DCruz','2012', 'Shankar'); 
+insert into movie_details values('7th Sense','Surya','Shruti Haasan','2011', 'AR Murugadoss'); 
+insert into movie_details values('Thani Oruvan','Jayam Ravi','Nayanthara','2015', 'Mohan Raja'); 
+insert into movie_details values('Ethir Neechal','Sivakarthikeyan','Priya Anand','2013', 'Durai Senthilkumar'); 
+insert into movie_details values('Vellaikaran','Sivakarthikeyan','Nayanthara','2017', 'Mohan Raja'); 
+
+//QUERIES
+
+select* from movie_details  //Display the records present in movie_details table
+
+select* from movie_details where actor like 'S%'; //Display the details whose actor name starts with S
+
+select director, count(*) from movie_details group by director having count(*) > 1; //Display the count where director made more than one movie
+
+select movie_name, director, release_year from movie_details where actor='Surya' OR actor='Surya Sivakumar'; //Display the details only when the actor is Surya or Surya Sivakumar
+
+select DISTINCT director, movie_name, release_year from movie_details where release_year > '2017'; //Display the details with the director after the release of 2017
